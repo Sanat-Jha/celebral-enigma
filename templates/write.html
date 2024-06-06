@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Post - Cerebral Enigma</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/write.css' %}">
+    <link rel="shortcut icon" href="{% static '3.png' %}" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'home' %}">
+                <img src="{% static '4.png' %}" alt="Cerebral Enigma Logo" class="logo">
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="content">
+            <!-- post_form.html -->
+            <!-- post_form.html -->
+            <form class="post-form" method="post" action="/addpost" id="post-form">
+                {% csrf_token %}
+                <input type="text" name="title" class="post-title-input ubuntu-regular" placeholder="Title"
+                {% if repeat %} value="{{title}}"{% endif %}>
+                <textarea class="post-content-input ubuntu-regular" name="content"
+                    placeholder="Write your post here...">{% if repeat %}{{content}}{% endif %}</textarea>
+                <select name="category_dropdown" class="post-category-select ubuntu-regular" id="category-dropdown">
+                    <option value="" selected>Create new category...</option>
+                    {% for category in categories %}
+                    <option value="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" name="category_input" class="post-new-category-input ubuntu-regular"
+                    id="new-category-input" placeholder="New category">
+                <button class="post-button ubuntu-bold" type="submit">Post</button>
+            </form>
+            {% if repeat %}
+            <script> console.alert("The title is used")</script> {% endif %}
+            <script>
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    var categoryDropdown = document.getElementById("category-dropdown");
+                    var newCategoryInput = document.getElementById("new-category-input");
+                    var form = document.getElementById("post-form");
+
+                    // Function to handle dropdown change
+                    function handleDropdownChange() {
+                        if (categoryDropdown.value === "") {
+                            newCategoryInput.style.display = "inline-block";
+                            newCategoryInput.name = "category";  // Set name to "category"
+                            categoryDropdown.name = "";  // Remove name from dropdown
+                            newCategoryInput.focus();
+                        } else {
+                            newCategoryInput.style.display = "none";
+                            newCategoryInput.name = "";  // Remove name from input
+                            categoryDropdown.name = "category";  // Set name to "category"
+                        }
+                    }
+
+                    // Attach event listener to the dropdown
+                    categoryDropdown.addEventListener("change", handleDropdownChange);
+
+                    // Initial check on page load
+                    handleDropdownChange();
+
+                    // Ensure that the correct input is submitted based on the selected option
+                    form.addEventListener("submit", function (event) {
+                        if (categoryDropdown.value === "" && newCategoryInput.value === "") {
+                            event.preventDefault();
+                            alert("Please select a category or create a new one.");
+                        }
+                    });
+                });
+            </script>
+
+        </div>
+    </main>
+    <script src="{% static 'js/write.js' %}"></script>
+</body>
+
+</html>
