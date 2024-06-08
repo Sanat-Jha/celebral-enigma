@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,12 +29,12 @@
                 <div class="post-card ubuntu-regular">
                     <h2 class="post-title ubuntu-bold">{{post.title}}</h2>
                     <div class="post-date">{{post.date}}</div>
-                    <p class="post-excerpt">{{post.content}}</p>
+                    <p class="post-excerpt">{% remove_html_tags post.content %}</p>
                     <a href="/post/{{post.title}}" class="read-button ubuntu-medium">Read More</a>
                 </div>
                 {% endfor %}
-                
-                
+
+
 
                 <!-- Add more post cards as needed -->
             </section>

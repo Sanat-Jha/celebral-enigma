@@ -1,23 +1,34 @@
 from django.shortcuts import render,redirect
 from .models import Post,Category
 from django.urls import reverse
+import re
 
+def remove_html_tags(text):
+    # This pattern matches any text within angle brackets, including the brackets themselves
+    clean = re.compile('<.*?>')
+    # Replace all occurrences with an empty string
+    return re.sub(clean, '', text)
 # Create your views here.
 def home(request):
     context = {
         "categories": Category.objects.all(),
         "posts": Post.objects.all().order_by('-date'),
-        "topposts":Post.objects.all().order_by('-views')[:5]
+        "topposts":Post.objects.all().order_by('-views')[:5],
+        "remove_html_tags":remove_html_tags
     }
     return render(request, "home.html",context)
 
 def post(request,title):
     p = Post.objects.get(title=title)
+    if Category.objects.filter(posts=p).first() != None:
+        catList = Category.objects.filter(posts=p).first().posts.all()
+    else:
+        catList = []
     context = {
         "title":p.title,
         "content":p.content,
         "date":p.date,
-        "categoryPosts":Category.objects.filter(posts=p).first().posts.all(),
+        "categoryPosts": catList,
     }
     return render(request, "post.html",context)
 
