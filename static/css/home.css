@@ -1,0 +1,293 @@
+/* Base Styles */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #000;
+    color: #fff;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    height: 80px;
+}
+
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    gap: 10px; /* Reduced gap between blog posts and sidebars */
+}
+
+/* Sidebar Styles */
+.left-sidebar, .right-sidebar {
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.left-sidebar {
+    flex: 0.8; /* Reduced width of left sidebar */
+    margin-right: 5px;
+}
+
+.right-sidebar {
+    flex: 0.7; /* Increased width of right sidebar */
+    margin-left: 5px;
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+    margin-bottom: 20px;
+}
+
+.sidebar-title {
+    margin-top: 0;
+    color: #000;
+    font-weight: 1000;
+}
+
+.about-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.writer-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.about-text {
+    color: #333;
+}
+
+/* Subscribe Widget */
+#subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#subscriber-name,
+#subscriber-email {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #000;
+}
+
+.subscribe-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.subscribe-button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+/* Blog Posts Section */
+.blog-posts {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.post-card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    opacity: 0;
+    animation: cardLoad 0.5s forwards;
+    position: relative;
+}
+
+.post-header {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between icon and date */
+    margin-bottom: 10px; /* Add spacing below the header */
+}
+
+.paper-icon {
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    z-index: 2; /* Ensures it stays on top */
+    margin-right: 10px; /* Add some spacing */
+}
+
+.post-date {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    margin-left: auto; /* Push the date to the right */
+    display: flex; /* Use flex for centering */
+    align-items: center; /* Center the date vertically */
+    height: 100%; /* Allow it to take full height of header */
+}
+
+.post-content {
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .post-date {
+        font-size: 70%;
+    }
+    .post-title {
+        font-size: 100%;
+    }
+    .read-button {
+        font-size: 70%;
+    }
+}
+
+.post-title {
+    color: #000;
+    margin-top: 0;
+}
+
+.post-excerpt {
+    color: #333;
+}
+
+.read-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: inherit;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.read-button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    transform: scale(1.05);
+}
+
+/* Sidebar Links */
+.topics, .top-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.topics li, .top-posts li {
+    margin-bottom: 10px;
+}
+
+.topics a, .top-posts a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.topics a:hover, .top-posts a:hover {
+    color: #333;
+}
+
+/* Animations */
+@keyframes cardLoad {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.mobileshow{
+    display: none;
+}
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .right-sidebar{
+        display: none;
+    }
+    .mobileshow{
+        display: block;
+    }
+    .laptopshow{
+        display: none;
+    }
+    .left-sidebar {
+        display: none; /* Keep this if you want to show it later */
+        position: absolute;
+        top: 80px; /* Adjust as needed for vertical position */
+        left: 50%; /* Center horizontally */
+        width: 80%; /* Adjust width as needed */
+        margin: auto;
+        background-color: #fff;
+        z-index: 1000;
+        padding: 20px;
+        border-right: 1px solid #e0e0e0;
+        transform: translateX(-50%); /* Shift back by half its width */
+    }
+    
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .left-sidebar.collapsed {
+        display: block;
+    }
+}

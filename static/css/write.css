@@ -1,0 +1,326 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #000;
+    color: #fff;
+    height: 80px;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    height: 80px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.post-form {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-title-input {
+    font-size: 1.5em;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.post-content-input {
+    height: 400px;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1em;
+    resize: vertical;
+}
+
+.post-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    align-self: flex-end;
+}
+
+.post-button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* CSS for mobile layout */
+@media (max-width: 768px) {
+
+    .post-title-input,
+    .post-content-input {
+        font-size: 1.2em;
+    }
+
+    .post-button {
+        font-size: 1em;
+    }
+}
+
+
+.post-category-select,
+.post-new-category-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 5px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.post-category-select:focus,
+.post-new-category-input:focus {
+    border-color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+.post-new-category-input {
+    display: none;
+    /* Initially hidden */
+}
+
+#category-dropdown option[value=""] {
+    color: #999;
+    font-style: italic;
+}
+
+#category-dropdown {
+    cursor: pointer;
+}
+
+#new-category-input {
+    display: none;
+    /* Initially hidden */
+}
+
+.post-description-input {
+    height: 100px;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1em;
+    resize: vertical;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #000;
+    color: #fff;
+    height: 80px;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    height: 80px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+    /* Increased max-width */
+    padding: 0 20px;
+    /* Added padding */
+}
+
+.content {
+    width: 100%;
+    max-width: 1000px;
+    /* Adjusted max-width */
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    /* Full width */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group.full-width {
+    width: 100%;
+}
+
+.form-group.half-width {
+    width: 50%;
+}
+
+.post-title-input,
+.post-content-input,
+.post-description-input,
+.post-category-select,
+.post-new-category-input {
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    width: 100%;
+    /* Full width */
+}
+
+.post-title-input,
+.post-description-input {
+    height: 50px;
+    /* Reduced height */
+}
+
+.post-content-input {
+    height: 300px;
+    /* Adjusted height */
+    resize: vertical;
+}
+
+.post-category-select,
+.post-new-category-input {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    transition: border-color 0.3s, background-color 0.3s;
+    width: 100%;
+    /* Full width */
+}
+
+.post-category-select:focus,
+.post-new-category-input:focus {
+    border-color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+.post-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    align-self: flex-end;
+}
+
+.post-button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+.post-form {
+    max-width: 1000px;
+    /* Increased width */
+    margin: 20px auto;
+    /* Centering the form */
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+}
+
+.post-title-input {
+    flex: 1;
+    /* Take up remaining space */
+    width: auto;
+    /* Allow content to dictate width */
+    height: 40px;
+    /* Reduced height */
+}
+
+.post-description-input {
+    flex: 1;
+    /* Take up remaining space */
+    width: auto;
+    /* Allow content to dictate width */
+    height: 60px;
+    /* Reduced height */
+}
+
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .post-title-input,
+    .post-description-input {
+        width: 100%;
+        /* Full width on mobile */
+    }
+}

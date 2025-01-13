@@ -1,0 +1,154 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #000;
+    color: #fff;
+    height: 80px;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    height: 80px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.blog-content {
+    flex: 3;
+    padding: 20px;
+}
+
+.post-title {
+    margin-top: 0;
+    color: #000;
+    font-size: 2em;
+}
+
+.post-date {
+    position: block;
+    top: 20px;
+    right: 20px;
+    background-color: #00000083;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: max-content;
+    font-size: 0.9em;
+    /* Default size */
+}
+
+.subheading {
+    color: #333;
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.sidebar {
+    flex: 1;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    margin-top: 0;
+    color: #000;
+}
+
+.topics {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.topics li {
+    margin-bottom: 10px;
+}
+
+.topics a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.topics a:hover {
+    color: #333;
+}
+
+/* CSS for mobile layout */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        /* Initially hide the sidebar */
+        position: absolute;
+        top: 80px;
+        left: 0;
+        height: calc(100vh - 80px);
+        width: 70%;
+        background-color: #fff;
+        z-index: 1000;
+        padding: 20px;
+        border-right: 1px solid #e0e0e0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(0%);
+        /* Move sidebar out of the viewport */
+    }
+
+    .hamburger-btn {
+        display: block;
+        /* Show hamburger button */
+    }
+}
+
+.hamburger-btn {
+    display: none;
+    /* Hide by default */
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .sidebar.collapsed {
+        display: block;
+        /* Show sidebar when collapsed */
+    }
+
+    .hamburger-btn {
+        display: block;
+        /* Show hamburger button */
+    }
+}
