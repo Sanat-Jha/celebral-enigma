@@ -6,6 +6,10 @@ body {
     margin: 0;
     padding: 0;
 }
+a{
+    color: #000;
+    text-decoration: none;
+}
 
 /* Navbar */
 .navbar {
@@ -137,7 +141,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 15px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
 }
@@ -266,11 +269,15 @@ body.sidebar-open {
     align-items: center;
     text-align: center;
 }
+.about-section{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
 
 .writer-pic {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
     margin-bottom: 10px;
 }
 
@@ -451,7 +458,7 @@ body.sidebar-open {
     .left-sidebar {
         display: none; /* Keep this if you want to show it later */
         position: absolute;
-        top: 80px; /* Adjust as needed for vertical position */
+        top: 8px; /* Adjust as needed for vertical position */
         left: 50%; /* Center horizontally */
         width: 80%; /* Adjust width as needed */
         margin: auto;

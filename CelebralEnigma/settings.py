@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8($9bg!v0*nm!mzffcva#0*9#!i!&q)7p9inu+1k*b4ut(mcnm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["celebralenigma.pythonanywhere.com"]
+ALLOWED_HOSTS = ["celebralenigma.pythonanywhere.com","*"]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CelebralEnigmaBlog',
+    'django.contrib.sitemaps'
 ]
 
 

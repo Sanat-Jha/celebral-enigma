@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://celebralenigma.pythonanywhere.com/sitemap.xml

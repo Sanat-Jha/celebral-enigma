@@ -4,106 +4,169 @@
 <html lang="en">
 
 <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cerebral Enigma - Explore technology, psychology, and philosophy with Sanat Jha. Deep insights on tech advancements, human behavior, and philosophical discourse.">
+    <meta name="author" content="Sanat Jha">
+    <meta name="keywords"
+        content="technology blog, psychology insights, philosophy discussion, tech advancements, human behavior, Sanat Jha">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Cerebral Enigma - Technology, Psychology & Philosophy Blog">
+    <meta property="og:description"
+        content="Explore insightful discussions on technology, psychology, and philosophy with Sanat Jha. Join our community of curious minds.">
+    <meta property="og:image" content="{% static '4.png' %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cerebral Enigma - Technology, Psychology & Philosophy Blog">
+    <meta name="twitter:description"
+        content="Explore insightful discussions on technology, psychology, and philosophy with Sanat Jha.">
+    <meta name="twitter:image" content="{% static '4.png' %}">
+
+    <title>Cerebral Enigma | Technology, Psychology & Philosophy Blog by Sanat Jha</title>
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
     <meta name="csrf-token" content="{{ csrf_token }}">
 
-    <title>Cerebral Enigma</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+
+    <!-- Stylesheets with Performance Attributes -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+        media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="{% static '3.png' %}" type="image/x-icon">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static '3.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static '3.png' %}">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Cerebral Enigma",
+        "description": "Explore technology, psychology, and philosophy with Sanat Jha",
+        "url": "{{ request.build_absolute_uri }}",
+        "author": {
+            "@type": "Person",
+            "name": "Sanat Jha",
+            "image": "https://imgs.search.brave.com/c-ZkmWHi90ABMwIgXuOM9t7PIR6CWntGKT6GhpwE32A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5mdGNkbi5uZXQvanBnLzAwLzY1Lzc3LzI3LzM2MF9GXzY1NzcyNzE5X0ExVVY1a0xpNW5DRVdJMEJOTExpRmFCUEVrVWJ2NUZ2LmpwZw"
+        }
+    }
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="{% url 'home' %}">
-                <img src="{% static '4.png' %}" alt="Cerebral Enigma Logo" class="logo">
-            </a>
-            <button class="hamburger-btn">&#9776;</button>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <a href="{% url 'home' %}" aria-label="Go to homepage">
+                    <img src="{% static '4.png' %}" alt="Cerebral Enigma Logo" class="logo">
+                </a>
+                <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            </div>
+        </nav>
+    </header>
 
     <main class="container">
         <div class="content">
             <aside class="sidebar left-sidebar">
                 <div class="sidebar-widget about-widget">
-                    <img src="https://imgs.search.brave.com/c-ZkmWHi90ABMwIgXuOM9t7PIR6CWntGKT6GhpwE32A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzY1Lzc3LzI3/LzM2MF9GXzY1Nzcy/NzE5X0ExVVY1a0xp/NW5DRVdJMEJOTExp/RmFCUEVrVWJ2NUZ2/LmpwZw"
-                        alt="Writer" class="writer-pic">
-                    <p class="about-text">I’m Sanat Jha, an explorer of technology, psychology, and philosophy. In this
-                        blog, I share insights on various topics, from tech advancements to the complexities of human
-                        behavior and thought-provoking philosophy. My goal is to spark curiosity and inspire you to
-                        think differently.</p>
+                    <a href="https://sanatjha.me">
+
+                        <div class="about-section">
+                            <img src="{% static 'user.png' %}" alt="Sanat Jha - Blog Author" class="writer-pic"
+                                width="200" height="200" loading="lazy">
+                            <div class="about-text">
+                                <h2>About Me</h2>
+                                <p>I'm Sanat Jha, an explorer of technology, psychology,
+                                    and philosophy. In this blog, I share insights on various topics, from tech
+                                    advancements
+                                    to the complexities of human behavior and thought-provoking philosophy. My goal is
+                                    to
+                                    spark curiosity and inspire you to think differently.</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="sidebar-widget subscribe-widget">
-                    <h3 class="sidebar-title">Subscribe to my blog</h3>
-                    <p>Never miss a new post on Cerebral Enigma.</p>
-                    <form id="subscribe-form">{% csrf_token %}
-                        <input type="text" id="subscriber-name" name="name" placeholder="Name" required>
-                        <input type="email" id="subscriber-email" name="email" placeholder="Email" required>
+                    <h3 class="sidebar-title">Subscribe to Cerebral Enigma</h3>
+                    <p>Never miss a new post. </p>
+                    <form id="subscribe-form" action="/subscribe" method="POST">
+                        {% csrf_token %}
+                        <input type="text" id="subscriber-name" name="name" placeholder="Your name" required>
+                        <input type="email" id="subscriber-email" name="email" placeholder="Your email" required>
                         <button type="submit" class="subscribe-button">Subscribe</button>
                     </form>
                 </div>
                 <div class="mobileshow">
-
+                    <nav class="categories-nav" aria-label="Blog categories">
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-title">Topics</h3>
+                            <ul class="topics">
+                                {% if displayAll %}<li><a href="/"><b>All</b></a></li>{% endif %}
+                                {% for category in categories %}
+                                <li><a href="/category/{{ category.name }}">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </nav>
                     <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Topics</h3>
-                        <ul class="topics">
-                            {% if displayAll %}<li><a href="/">All</a></li>{% endif %}
-                            {% for category in categories %}
-                            <li><a href="/category/{{ category.name }}">{{ category.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Top Posts</h3>
+                        <h3 class="sidebar-title">Popular Posts</h3>
                         <ul class="top-posts">
                             {% for post in topposts %}
-                            <li><a href="/post/{{ post.title }}">{{ post.title }}</a></li>
+                            <li><a href="/post/{{ post.title }}" title="Read {{ post.title }}">{{ post.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
             </aside>
 
-            <section class="blog-posts" id="blog-posts">
-                <!-- Loading animation -->
-                <div class="loading-animation"></div>
+            <section class="blog-posts" id="blog-posts" aria-label="Blog posts">
+                <div class="loading-animation" aria-label="Loading posts"></div>
 
                 {% for post in posts %}
                 <article class="post-card hidden">
-                    <div class="post-header">
-                        <img src="{% static 'pin.png' %}" class="paper-icon">
-                        <span class="post-date">{{ post.date }}</span>
-                    </div>
+                    <header class="post-header">
+                        <img src="{% static 'pin.png' %}" class="paper-icon" alt="" aria-hidden="true" width="20"
+                            height="20">
+                        <time class="post-date" datetime="{{ post.date|date:'Y-m-d' }}">{{ post.date }}</time>
+                    </header>
                     <div class="post-content">
-                        <h2 class="post-title">{{ post.title }}</h2>
+                        <h2 class="post-title"><a href="/post/{{ post.title }}">{{ post.title }}</a></h2>
                         <p class="post-excerpt">{{ post.description }}</p>
-                        <a href="/post/{{ post.title }}" class="read-button">Read More</a>
+                        <a href="/post/{{ post.title }}" class="read-button"
+                            aria-label="Read more about {{ post.title }}">Read More</a>
                     </div>
                 </article>
                 {% endfor %}
-
             </section>
 
             <aside class="sidebar right-sidebar">
                 <div class="laptopshow">
-
+                    <nav class="categories-nav" aria-label="Blog categories">
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-title">Topics</h3>
+                            <ul class="topics">
+                                {% if displayAll %}<li><a href="/"><b>All</b></a></li>{% endif %}
+                                {% for category in categories %}
+                                <li><a href="/category/{{ category.name }}">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </nav>
                     <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Topics</h3>
-                        <ul class="topics">
-                            {% if displayAll %}<li><a href="/"><b>All</b></a></li>{% endif %}
-                            {% for category in categories %}
-                            <li><a href="/category/{{ category.name }}">{{ category.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Top Posts</h3>
+                        <h3 class="sidebar-title">Popular Posts</h3>
                         <ul class="top-posts">
                             {% for post in topposts %}
-                            <li><a href="/post/{{ post.title }}">{{ post.title }}</a></li>
+                            <li><a href="/post/{{ post.title }}" title="Read {{ post.title }}">{{ post.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -111,11 +174,12 @@
             </aside>
         </div>
     </main>
-
+    <!-- Deferred Loading of Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script>
         const csrfToken = '{{ csrf_token }}';
     </script>
-    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/home.js' %}" defer></script>
 </body>
 
 </html>
