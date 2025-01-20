@@ -29,8 +29,12 @@
         <div class="content">
             <aside class="sidebar left-sidebar">
                 <div class="sidebar-widget about-widget">
-                    <img src="https://imgs.search.brave.com/c-ZkmWHi90ABMwIgXuOM9t7PIR6CWntGKT6GhpwE32A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzY1Lzc3LzI3/LzM2MF9GXzY1Nzcy/NzE5X0ExVVY1a0xp/NW5DRVdJMEJOTExp/RmFCUEVrVWJ2NUZ2/LmpwZw" alt="Writer" class="writer-pic">
-                    <p class="about-text">I’m Sanat Jha, an explorer of technology, psychology, and philosophy. In this blog, I share insights on various topics, from tech advancements to the complexities of human behavior and thought-provoking philosophy. My goal is to spark curiosity and inspire you to think differently.</p>
+                    <img src="https://imgs.search.brave.com/c-ZkmWHi90ABMwIgXuOM9t7PIR6CWntGKT6GhpwE32A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzY1Lzc3LzI3/LzM2MF9GXzY1Nzcy/NzE5X0ExVVY1a0xp/NW5DRVdJMEJOTExp/RmFCUEVrVWJ2NUZ2/LmpwZw"
+                        alt="Writer" class="writer-pic">
+                    <p class="about-text">I’m Sanat Jha, an explorer of technology, psychology, and philosophy. In this
+                        blog, I share insights on various topics, from tech advancements to the complexities of human
+                        behavior and thought-provoking philosophy. My goal is to spark curiosity and inspire you to
+                        think differently.</p>
                 </div>
                 <div class="sidebar-widget subscribe-widget">
                     <h3 class="sidebar-title">Subscribe to my blog</h3>
@@ -42,7 +46,7 @@
                     </form>
                 </div>
                 <div class="mobileshow">
-        
+
                     <div class="sidebar-widget">
                         <h3 class="sidebar-title">Topics</h3>
                         <ul class="topics">
@@ -62,48 +66,48 @@
                     </div>
                 </div>
             </aside>
-            
-<section class="blog-posts" id="blog-posts">
+
+            <section class="blog-posts" id="blog-posts">
                 <!-- Loading animation -->
                 <div class="loading-animation"></div>
-                
+
                 {% for post in posts %}
-<article class="post-card hidden">
-    <div class="post-header">
-        <img src="{% static 'pin.png' %}" class="paper-icon">
-        <span class="post-date">{{ post.date }}</span>
-    </div>
-    <div class="post-content">
-        <h2 class="post-title">{{ post.title }}</h2>
-        <p class="post-excerpt">{{ post.description }}</p>
-        <a href="/post/{{ post.title }}" class="read-button">Read More</a>
-    </div>
-</article>
-{% endfor %}
+                <article class="post-card hidden">
+                    <div class="post-header">
+                        <img src="{% static 'pin.png' %}" class="paper-icon">
+                        <span class="post-date">{{ post.date }}</span>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <p class="post-excerpt">{{ post.description }}</p>
+                        <a href="/post/{{ post.title }}" class="read-button">Read More</a>
+                    </div>
+                </article>
+                {% endfor %}
 
             </section>
-            
+
             <aside class="sidebar right-sidebar">
                 <div class="laptopshow">
-                    
+
                     <div class="sidebar-widget">
                         <h3 class="sidebar-title">Topics</h3>
                         <ul class="topics">
                             {% if displayAll %}<li><a href="/"><b>All</b></a></li>{% endif %}
                             {% for category in categories %}
                             <li><a href="/category/{{ category.name }}">{{ category.name }}</a></li>
-                        {% endfor %}
-                    </ul>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">Top Posts</h3>
+                        <ul class="top-posts">
+                            {% for post in topposts %}
+                            <li><a href="/post/{{ post.title }}">{{ post.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Top Posts</h3>
-                    <ul class="top-posts">
-                        {% for post in topposts %}
-                        <li><a href="/post/{{ post.title }}">{{ post.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
             </aside>
         </div>
     </main>

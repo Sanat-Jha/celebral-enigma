@@ -65,7 +65,7 @@ html_email_template = """
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://celebral-enigma.onrender.com/static/4.png" alt="Cerebral Enigma Logo">
+            <img src="https://celebralenigma.pythonanywhere.com/static/4.png" alt="Cerebral Enigma Logo">
             <h1>Thank You for Subscribing!</h1>
         </div>
         <div class="content">
@@ -77,7 +77,7 @@ html_email_template = """
         </div>
         <div class="footer">
             <p>If you did not subscribe to our newsletter, please ignore this email.</p>
-            <p><a href="https://celebral-enigma.onrender.com">Visit our website</a></p>
+            <p><a href="https://celebralenigma.pythonanywhere.com">Visit our website</a></p>
         </div>
     </div>
 </body>
@@ -164,7 +164,7 @@ new_blog_post_email_template = """
     <body>
         <div class="container">
             <div class="header">
-                <img src="https://celebral-enigma.onrender.com/static/4.png" alt="Cerebral Enigma Logo">
+                <img src="https://celebralenigma.pythonanywhere.com/static/4.png" alt="Cerebral Enigma Logo">
                 <h1>New Blog Post Alert!</h1>
             </div>
             <div class="content">
@@ -173,8 +173,8 @@ new_blog_post_email_template = """
                 <a href="{post_url}">Read the Full Post</a>
             </div>
             <div class="footer">
-                <p>If you no longer wish to receive these updates, please <a href="https://celebral-enigma.onrender.com/unsubscribe">unsubscribe here</a>.</p>
-                <p><a href="https://celebral-enigma.onrender.com">Visit our website</a></p>
+                <p>If you no longer wish to receive these updates, please <a href="https://celebralenigma.pythonanywhere.com/unsubscribe">unsubscribe here</a>.</p>
+                <p><a href="https://celebralenigma.pythonanywhere.com/">Visit our website</a></p>
             </div>
         </div>
     </body>

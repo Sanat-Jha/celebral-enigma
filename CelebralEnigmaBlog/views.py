@@ -7,6 +7,7 @@ from .tasks import send_new_blog_post_email
 from .models import Post, Category, EmailSubs
 from .htmlStrings import html_email_template
 from urllib.parse import unquote
+import threading
 
 
 def home(request):
@@ -68,7 +69,7 @@ def addpost(request):
         category.posts.add(post)
 
         try:
-            send_new_blog_post_email(post.title, post.description, f"http://celebral-enigma.onrender.com/post/{title}", [subscriber.email for subscriber in EmailSubs.objects.all()])
+            threading.Thread(target=send_new_blog_post_email, args=(post.title, post.description, f"http://celebral-enigma.onrender.com/post/{title}", [subscriber.email for subscriber in EmailSubs.objects.all()])).start()
         except Exception as e:
             print(f"Error sending email: {e}")
         
@@ -115,7 +116,7 @@ def newsubscribe(request):
             email_message.content_subtype = "html"
 
             try:
-                email_message.send(fail_silently=False)
+                threading.Thread(target=email_message.send, kwargs={'fail_silently': False}).start()
                 return JsonResponse({'success': True})
             except Exception as e:
                 return JsonResponse({'success': False, 'error': str(e)}, status=500)
