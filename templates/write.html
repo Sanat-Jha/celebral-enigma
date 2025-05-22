@@ -9,6 +9,57 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="{% static 'css/write.css' %}">
     <link rel="shortcut icon" href="{% static '3.png' %}" type="image/x-icon">
+    <style>
+        .editor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .editor-toolbar button {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        
+        .editor-toolbar button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .editor-toolbar button.active {
+            background-color: #e6e6e6;
+        }
+        
+        .editor-content {
+            min-height: 300px;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            overflow-y: auto;
+            background-color: white;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        
+        .editor-content:focus {
+            outline: none;
+        }
+        
+        .hidden-textarea {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,8 +95,25 @@
                         required>{% if repeat %}{{description}}{% endif %}</textarea>
                 </div>
                 <div class="form-group full-width">
-                    <textarea class="post-content-input" name="content" placeholder="Write your post here..."
-                        required>{% if repeat %}{{content}}{% endif %}</textarea>
+                    <div class="editor-toolbar">
+                        <button type="button" data-command="bold" title="Bold"><b>B</b></button>
+                        <button type="button" data-command="italic" title="Italic"><i>I</i></button>
+                        <button type="button" data-command="underline" title="Underline"><u>U</u></button>
+                        <button type="button" data-command="strikeThrough" title="Strike through"><s>S</s></button>
+                        <button type="button" data-command="justifyLeft" title="Align left">Left</button>
+                        <button type="button" data-command="justifyCenter" title="Align center">Center</button>
+                        <button type="button" data-command="justifyRight" title="Align right">Right</button>
+                        <button type="button" data-command="insertOrderedList" title="Ordered list">1.</button>
+                        <button type="button" data-command="insertUnorderedList" title="Unordered list">•</button>
+                        <button type="button" data-command="createLink" title="Insert link">Link</button>
+                        <button type="button" data-command="insertImage" title="Insert image">Image</button>
+                        <button type="button" data-command="formatBlock" data-value="h1" title="Heading 1">H1</button>
+                        <button type="button" data-command="formatBlock" data-value="h2" title="Heading 2">H2</button>
+                        <button type="button" data-command="formatBlock" data-value="h3" title="Heading 3">H3</button>
+                        <button type="button" data-command="formatBlock" data-value="p" title="Paragraph">P</button>
+                    </div>
+                    <div id="editor-content" class="editor-content" contenteditable="true" placeholder="Write your post here...">{% if repeat %}{{content|safe}}{% endif %}</div>
+                    <textarea class="hidden-textarea post-content-input" name="content" id="hidden-content" required>{% if repeat %}{{content}}{% endif %}</textarea>
                 </div>
                 <div class="form-group half-width">
                     <select name="category_dropdown" class="post-category-select" id="category-dropdown">
@@ -70,8 +138,76 @@
         {% if repeat %}
         alert("The title is used");
         {% endif %}
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const initEditor = function() {
+                const editor = document.getElementById('editor-content');
+                const hiddenContent = document.getElementById('hidden-content');
+                const buttons = document.querySelectorAll('.editor-toolbar button');
+                
+                // Set placeholder behavior
+                if (editor.innerHTML.trim() === '') {
+                    editor.innerHTML = '';
+                }
+                
+                editor.addEventListener('focus', function() {
+                    if (editor.innerHTML === '') {
+                        editor.innerHTML = '';
+                    }
+                });
+                
+                editor.addEventListener('blur', function() {
+                    if (editor.innerHTML === '') {
+                        editor.innerHTML = '';
+                    }
+                    // Update hidden textarea with editor content
+                    hiddenContent.value = editor.innerHTML;
+                });
+                
+                // Update hidden textarea when content changes
+                editor.addEventListener('input', function() {
+                    hiddenContent.value = editor.innerHTML;
+                });
+                
+                // Handle toolbar button clicks
+                buttons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const command = this.dataset.command;
+                        const value = this.dataset.value || null;
+                        
+                        if (command === 'createLink') {
+                            const url = prompt('Enter the link URL:');
+                            if (url) document.execCommand(command, false, url);
+                        } else if (command === 'insertImage') {
+                            const url = prompt('Enter the image URL:');
+                            if (url) document.execCommand(command, false, url);
+                        } else {
+                            document.execCommand(command, false, value);
+                        }
+                        
+                        // Update hidden textarea with editor content
+                        hiddenContent.value = editor.innerHTML;
+                        editor.focus();
+                    });
+                });
+                
+                // Handle form submission
+                document.getElementById('post-form').addEventListener('submit', function() {
+                    hiddenContent.value = editor.innerHTML;
+                });
+            };
+            
+            // Check if the main content is already visible
+            if (document.getElementById('main-content').style.display !== 'none') {
+                initEditor();
+            } else {
+                // Create a custom event to listen for when the password is validated
+                document.addEventListener('passwordValidated', function() {
+                    setTimeout(initEditor, 100);
+                });
+            }
+        });
     </script>
-    
 </body>
 
 </html>

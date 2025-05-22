@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch(`/valid_write_password?password=${encodeURIComponent(password)}`)
             .then(response => response.json())
             .then(data => {
+                // Add this to the validatePassword function, after showing the main content
                 if (data.valid) {
                     // Password is valid, show the content
                     passwordDialog.style.display = "none";
@@ -37,7 +38,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     
                     // Initialize the form functionality
                     initializeForm();
-                } else {
+                    
+                    // Dispatch custom event to initialize editor
+                    document.dispatchEvent(new CustomEvent('passwordValidated'));
+                }
+                else {
                     // Password is invalid
                     passwordError.textContent = "Incorrect password. Please try again.";
                     passwordInput.value = "";
