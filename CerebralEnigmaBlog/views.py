@@ -8,7 +8,9 @@ from .models import Post, Category, EmailSubs
 from .htmlStrings import html_email_template
 from urllib.parse import unquote
 import threading
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def home(request):
     context = {
@@ -29,7 +31,7 @@ def post(request, title):
         "date": p.date,
         "categoryPosts": catList,
     }
-    return render(request, "post.html", context)
+    return render(request, "post.html", context)    
 
 
 def write(request):
@@ -43,10 +45,13 @@ def write(request):
         "content": content,
         "repeat": bool(title or content),
         "categories": Category.objects.all(),
-        "password": "sanatjha"
+        "password": "Sarthak@2012"
     }
     return render(request, "write.html", context)
 
+def valid_write_password(request):
+    password = request.GET.get("password")
+    return JsonResponse({'valid': password == os.getenv('WRITE_PASSWORD')})
 
 def addpost(request):
     if request.method == "POST":
