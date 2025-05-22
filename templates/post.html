@@ -75,25 +75,32 @@
     </script>
 
     <script>
-        $(document).ready(function() {
-            setTimeout(function() {
-                var postTitle = '{{title}}';
+        document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var postTitle = '{{title}}';
 
-                $.ajax({
-                    url: '/increaseviewcount/',
-                    type: 'POST',
-                    headers: {
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    data: { post_title: postTitle },
-                    success: function(response) {
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                    }
-                });
-            }, 60000);
+        fetch('/increaseviewcount/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: new URLSearchParams({
+                post_title: postTitle
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
+
+    }, 5000);
+});
+
     </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7M4GMSWC1"></script>
